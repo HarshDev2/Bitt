@@ -9,13 +9,11 @@ exports.run = (client, message, args) => {
     const AmountDeleted = new EmbedBuilder()
     .setDescription(`Sucessfully deleted ${amount} messages.`)
 
-    if(amount > 100 || amount < 1) {
-        message.channel.send({ embeds: [AmountError], ephemeral: true})
-    }
+    if(!message.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return;
+
+    if(amount > 100 || amount < 1) return message.channel.send({ embeds: [AmountError], ephemeral: true});
     
-    else { 
-        message.channel.bulkDelete(amount);
-        message.channel.send({ embeds: [AmountDeleted] });
-    }
+    message.channel.bulkDelete(amount);
+    message.channel.send({ embeds: [AmountDeleted] });
 }
 exports.name = 'purge'
