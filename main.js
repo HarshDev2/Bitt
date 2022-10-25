@@ -31,7 +31,7 @@ client.on('messageCreate', (message) => {
 	   if(!command){
 		message.channel.send('This command doesn\'t exists');
 	   }
-	   command.run(client, message, args);
+	   else return command.run(client, message, args);
 	}
 });
 
