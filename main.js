@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 const { Client, Events, GatewayIntentBits, AuditLogOptionsType, EmbedBuilder, Collection} = require('discord.js');
 const fs = require('fs');
+const path = require('node:path');
 const prefix = '!p';
 
 // Create a new client instance
@@ -12,6 +13,25 @@ dotenv.config();
 const token  = process.env.TOKEN;
 
 client.commands = new Collection();
+
+
+// This is a event reader down which fetches all event files from events folder.
+
+const eventsPath = path.join(__dirname, 'events');
+const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
+
+for (const file of eventFiles) {
+	const filePath = path.join(eventsPath, file);
+	const event = require(filePath);
+	if (event.once) {
+		client.once(event.name, (...args) => event.execute(...args));
+	} else {
+		client.on(event.name, (...args) => event.execute(...args));
+	}
+}
+
+// Normal Command Fetcher here 🔥
+
 const commands = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 for(file of commands){
 	const commandName = file.split('.')[0]
@@ -19,9 +39,24 @@ for(file of commands){
 	client.commands.set(commandName, command)
 }
 
-client.once(Events.ClientReady, c => {
-	console.log(`Ready! Logged in as ${c.user.tag}`);
-	});
+// Slash Command Fetcher here 🔥
+
+const commandsPath = path.join(__dirname, 'slash_commands');
+const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
+
+for (const file of commandFiles) {
+	const filePath = path.join(commandsPath, file);
+	const command = require(filePath);
+	// Set a new item in the Collection with the key as the command name and the value as the exported module
+	if ('data' in command && 'execute' in command) {
+		client.commands.set(command.data.name, command);
+	} else {
+		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+	}
+}
+
+// Normal Commands Handler here 🔥
+
 
 client.on('messageCreate', (message) => {
     if(message.content.startsWith(prefix)){
@@ -33,7 +68,8 @@ client.on('messageCreate', (message) => {
 	   }
 	   else return command.run(client, message, args);
 	}
-});
+}); 
 
-// Log in to Discord with your client's token
+// Log in to Discord with our client's token
+
 client.login(token);
