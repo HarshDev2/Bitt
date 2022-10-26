@@ -1,43 +1,34 @@
-const { EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder } = require('discord.js');
 
-exports.run = (client, message, args) => {
+module.exports = {
+	data: new SlashCommandBuilder()
+		.setName('quiz')
+		.setDescription('Starts a Quiz!')
+        .addStringOption(option =>
+            option.setName('category')
+                .setDescription('Category of questions.')
+                .setRequired(true)
+                .addChoices(
+                    { name: 'History', value: 'History' },
+                    { name: 'Arts', value: 'Arts' },
+                    { name: 'Comics', value: 'Comics' },
+                    { name: 'Computer', value: 'Computer' },
+                    { name: 'Animals', value: 'Animals' },
+                    { name: 'Films', value: 'Movies' },
+                ))
+        .addStringOption(option =>
+            option.setName('difficulty')
+                .setDescription('The difficulty of questions.')
+                .addChoices(
+                    { name: 'Easy', value: 'Easy' },
+                    { name: 'Medium', value: 'Medium' },
+                    { name: 'Hard', value: 'Hard' },
+                )),
 
-const CategoryChooser = new EmbedBuilder()
-		.setDescription('Please choose an category - \n \n (a) - History \n (b) - Arts \n (c) - Computer \n (d) - Comics \n (e) - Animals')
-	
-		message.channel.send({embeds: [CategoryChooser] }).then(sentMessage => {
-			sentMessage.react('🇦');
-			sentMessage.react('🇧');
-			sentMessage.react('🇨');
-			sentMessage.react('🇩');
-			sentMessage.react('🇪');
-		  });
+	async execute(interaction) {
+        const category = interaction.options.getString('category');
+        const difficulty = interaction.options.getString('difficulty');
 
-		  
-
-	const filter = (reaction, user) => {
-		return ['🇦', '🇧', '🇨', '🇩', '🇪'].includes(reaction.emoji.name);
-	};
-
-	message.awaitReactions({ filter, max: 1, time: 60000, errors: ['time'] })
-		.then(collected => {
-			const reaction = collected.first();
-
-			if (reaction.emoji.name == '🇦') return message.channel.send('you choosed a')
-		})
-		.catch(collected => {
-			message.reply('You didn\'t choosed anything.');
-		});
-
-const DifficultyChooser = new EmbedBuilder()
-		.setDescription('Please choose an Difficulty - \n \n (a) - Easy \n (b) - Medium \n (c) - Hard')
-	
-		message.channel.send({embeds: [DifficultyChooser] }).then(sentMessage => {
-			sentMessage.react('🇦');
-			sentMessage.react('🇧');
-			sentMessage.react('🇨');
-		  });
-
-
-		}
-exports.name = 'quiz'
+		await interaction.reply(`You choosed ${category} Category and ${difficulty} Difficulty. \n \n Quiz is being built.`);
+	},
+};

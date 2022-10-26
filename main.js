@@ -30,18 +30,9 @@ for (const file of eventFiles) {
 	}
 }
 
-// Normal Command Fetcher here 🔥
-
-const commands = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
-for(file of commands){
-	const commandName = file.split('.')[0]
-	const command = require(`./commands/${commandName}`)
-	client.commands.set(commandName, command)
-}
-
 // Slash Command Fetcher here 🔥
 
-const commandsPath = path.join(__dirname, 'slash_commands');
+const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
 for (const file of commandFiles) {
@@ -54,21 +45,6 @@ for (const file of commandFiles) {
 		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 	}
 }
-
-// Normal Commands Handler here 🔥
-
-
-client.on('messageCreate', (message) => {
-    if(message.content.startsWith(prefix)){
-       const args = message.content.slice(prefix.length).trim().split(/ +/g);
-	   const commandName = args.shift();
-	   const command = client.commands.get(commandName);
-	   if(!command){
-		message.channel.send('This command doesn\'t exists');
-	   }
-	   else return command.run(client, message, args);
-	}
-}); 
 
 // Log in to Discord with our client's token
 
