@@ -20,7 +20,7 @@ module.exports = {
         )
 	    .setTimestamp()
    
-         await interaction.reply({embeds: [InfoEmbed]});
+        await interaction.reply({embeds: [InfoEmbed]});
 
 	},
 };
