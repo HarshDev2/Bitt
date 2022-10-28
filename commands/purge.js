@@ -16,6 +16,7 @@ module.exports = {
          await interaction.channel.bulkDelete(amount);
 
          await interaction.reply(`Sucessfully Deleted ${amount} messages.`);
+         setTimeout(() => interaction.deleteReply(), 3000);
 
 	},
 };
