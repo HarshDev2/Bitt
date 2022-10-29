@@ -1,16 +1,16 @@
 {
-  "name": "programmers-bot",
+  "name": "bitt",
   "version": "1.0.0",
   "description": "",
-  "main": "lib/main.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon main.js",
-    "deploy": "nodemon deploy_commands.js"
+    "deploy": "nodemon deploy_commands.js",
+    "script-test": "nodemon message.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "ION Team",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
