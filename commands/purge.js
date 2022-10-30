@@ -14,10 +14,11 @@ module.exports = {
 
         if(!interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) return interaction.reply({content: 'You do not have permission to use this command'});
 
-         await interaction.channel.bulkDelete(amount);
-
-         await interaction.reply(`Sucessfully Deleted ${amount} messages.`);
-         setTimeout(() => interaction.deleteReply(), 3000);
+        else if(interaction.member.permissions.has(PermissionsBitField.Flags.ManageMessages)) {
+            interaction.channel.bulkDelete(amount);
+            interaction.reply(`Sucessfully Deleted ${amount} messages.`);
+            setTimeout(() => interaction.deleteReply(), 3000);
+        }
 
 	},
 };
