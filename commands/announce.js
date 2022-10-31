@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('disc
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('announcet')
+		.setName('announce')
 		.setDescription('announce anything in any channel!')
         .addChannelOption(option =>
             option.setName('channel')
