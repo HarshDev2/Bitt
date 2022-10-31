@@ -8,9 +8,9 @@ module.exports = {
 	async execute(interaction) {
         const InfoEmbed = new EmbedBuilder()
 	    .setColor(0x000000)
-        .setAuthor({ name: 'ProgQuiz' })
-	    .setDescription('Hi, my name is progquiz i am a discord bot developed by example team of developers, you can have fun with with my commands and get started by typing !p quiz.')
-        .setThumbnail('https://styles.redditmedia.com/t5_3b1wr/styles/communityIcon_qdbg6bz0bud71.png?width=256&s=ccf3d06bf3b8056f312f207c7ce906cf69af6efd')
+        .setAuthor({ name: 'Bitt' })
+	    .setDescription('Hi, my name is Bitt i am a multi purpose discord bot being developed by example team of developers.')
+        .setThumbnail('https://cdn.discordapp.com/avatars/1032836183065116722/b2628cef1a5640df7aac021d7e927b68.webp')  
         .addFields(
 		{
             name: 'Bot Information -',
