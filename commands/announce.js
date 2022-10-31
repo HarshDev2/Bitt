@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('disc
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('announce')
+		.setName('announcet')
 		.setDescription('announce anything in any channel!')
         .addChannelOption(option =>
             option.setName('channel')
@@ -29,6 +29,10 @@ module.exports = {
 
         const embedMessage = new EmbedBuilder()
             .setDescription(`${message}`)
+
+        const permissions = channel.permissionsFor(interaction.member);
+
+        if (!permissions.has(PermissionsBitField.Flags.SendMessages)) return interaction.editReply({content: 'You do not have permission to send messages in that channel'});
 
         if(!mention) {
 
