@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('disc
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('usert')
+		.setName('userinfo')
 		.setDescription('Provides information about a user.')
 		.addUserOption(option =>
             option.setName('user')
