@@ -7,7 +7,7 @@ module.exports = {
 	async execute(interaction) {
         const partnersEmbed = new EmbedBuilder()
             .setTitle('Bot\'s Partners')
-            .setColor(interaction.guild.me.displayHexColor)
+            .setColor('Random')
             .setDescription('We don\'t have any partners yet.')
 	},
 };
