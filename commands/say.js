@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('disc
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('echo')
+		.setName('say')
 		.setDescription('make the bot say anything!')
         .addStringOption(option =>
             option.setName('message')
