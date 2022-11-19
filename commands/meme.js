@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('meme')
-        .setDescription('a random inspirational quote for you'),
+        .setDescription('gets a random meme'),
 
     async execute(interaction) {
         const data = await fetch('https://meme-api.herokuapp.com/gimme')

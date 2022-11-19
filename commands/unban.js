@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('unban')
-		.setDescription('Kicks a particular user.')
+		.setDescription('Unbans a particular user.')
         .addUserOption(option =>
             option.setName('user')
                 .setDescription('User to be ubnbanned.')

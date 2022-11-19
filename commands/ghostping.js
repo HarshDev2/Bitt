@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('disc
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('ghostping')
-		.setDescription('announce anything in any channel!')
+		.setDescription('ghostping a role in particular channel')
 
         .addRoleOption(option =>
             option.setName('role')

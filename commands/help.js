@@ -3,7 +3,7 @@ const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder, ActionRowBuilder
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('help')
-		.setDescription('shows all the commands bot have'),
+		.setDescription('shows all the commands bot has'),
 
 	async execute(interaction) {
 
