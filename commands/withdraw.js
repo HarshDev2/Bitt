@@ -27,14 +27,14 @@ module.exports = {
         else if (userData.wallet < amount){
             const withdrawEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`💰 You need \` ${amount - userData.bank} :coin: \` more in your bank to withdraw money`)
+            .setDescription(`💰 You need ${amount - userData.bank} :coin: more in your bank to withdraw money`)
             return interaction.reply({embeds: [withdrawEmbed]})
         }
 
         else{
             const withdrawEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`✅ You have withdrawn \` ${amount} :coin: \` amount into your wallet.`)
+            .setDescription(`✅ You have withdrawn ${amount} :coin: amount into your wallet.`)
 
             userData.bank -= amount;
             userData.wallet += amount;

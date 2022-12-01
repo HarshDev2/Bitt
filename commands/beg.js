@@ -22,7 +22,7 @@ module.exports = {
 
         const begPassedEmbed = new EmbedBuilder()
         .setColor('Yellow')
-        .setDescription(`Oh my! You begged and earned \` ${amount} :coin: \``)
+        .setDescription(`Oh my! You begged and earned \ ${amount} :coin: `)
 
         if(!userData){
             const accountInvalidEmbed = new EmbedBuilder()
