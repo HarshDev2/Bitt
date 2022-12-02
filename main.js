@@ -1,4 +1,5 @@
 const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 const { Client, Events, GatewayIntentBits, AuditLogOptionsType, EmbedBuilder, Collection} = require('discord.js');
 const fs = require('fs');
 const path = require('node:path');
@@ -11,6 +12,7 @@ dotenv.config();
 // When the client is ready, run this code (only once)
 // We use 'c' for the event parameter to keep it separate from the already defined 'client'
 const token  = process.env.TOKEN;
+const mongoURI = process.env.MONGO_URL;
 
 client.commands = new Collection();
 
@@ -49,3 +51,8 @@ for (const file of commandFiles) {
 // Log in to Discord with our client's token
 
 client.login(token);
+mongoose.connect(mongoURI);
+mongoose.connection.on("connected", () => {
+  console.log("[✅ DataBase] Connected!");
+});
+module.exports = mongoose;
