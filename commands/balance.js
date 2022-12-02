@@ -32,8 +32,8 @@ module.exports = {
                 .setColor("Yellow")
                 .setThumbnail(user.displayAvatarURL())
                 .addFields(
-                    { name: '• Wallet', value: `**\` ${userData.wallet} :coin: \`**`, inline: true},
-                    { name: '• Bank', value: `**\` ${userData.bank} :coin: \`**`, inline: true},
+                    { name: '• Wallet', value: `** ${userData.wallet} :coin: **`, inline: true},
+                    { name: '• Bank', value: `** ${userData.bank} :coin: **`, inline: true},
                 
                 )
                 return interaction.reply({embeds: [balanceEmbed]})
