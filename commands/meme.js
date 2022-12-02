@@ -7,7 +7,7 @@ module.exports = {
         .setDescription('gets a random meme'),
 
     async execute(interaction) {
-        const data = await fetch('https://meme-api.herokuapp.com/gimme')
+        const data = await fetch('https://meme-api.com/gimme')
 
         const response = await data.json();
         

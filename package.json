@@ -15,8 +15,10 @@
     "discord.js": "^14.6.0",
     "dotenv": "^16.0.3",
     "fs": "^0.0.1-security",
+    "mathjs": "^11.4.0",
     "mongoose": "^6.7.0",
-    "node-fetch": "^2.6.7"
+    "node-fetch": "^2.6.7",
+    "something-random-on-discord": "^3.4.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
