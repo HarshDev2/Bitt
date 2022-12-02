@@ -12,10 +12,6 @@ module.exports = {
         const userData = await User.findOne({ id: user.id })
         const amount = await Math.floor(Math.random() * 500)
 
-        const begTimerEmbed = new EmbedBuilder()
-        .setColor("Yellow")
-        .setDescription(`⌛ Stop begging so much, wait for **\`${prettyMilliseconds(userData.cooldowns.beg - Date.now(), { verbose: true, secondsDecimalDigits: 0 })}\`**`)
-
         const begFailedEmbed = new EmbedBuilder()
         .setColor('Yellow')
         .setDescription(`🥺 You got nothing this time, maybe try hard next time?`)
@@ -31,7 +27,13 @@ module.exports = {
 
             return interaction.reply({embeds: [accountInvalidEmbed]})
         }
-        else if (userData.cooldowns.beg > Date.now()) return interaction.reply({ embeds: [begTimerEmbed], ephemeral: true})
+        else if (userData.cooldowns.beg > Date.now()) {
+            const begTimerEmbed = new EmbedBuilder()
+            .setColor("Yellow")
+            .setDescription(`⌛ Stop begging so much, wait for **\`${prettyMilliseconds(userData.cooldowns.beg - Date.now(), { verbose: true, secondsDecimalDigits: 0 })}\`**`)
+
+            return interaction.reply({ embeds: [begTimerEmbed], ephemeral: true})
+        }
 
 
         else if(amount <= 5) {

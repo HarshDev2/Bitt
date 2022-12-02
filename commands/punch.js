@@ -1,5 +1,4 @@
 const { SlashCommandBuilder, PermissionsBitField, EmbedBuilder } = require('discord.js');
-const Random  = require("something-random-on-discord").Random;
 
 module.exports = {
 	data: new SlashCommandBuilder()
