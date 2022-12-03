@@ -20,6 +20,9 @@ module.exports = {
         const channel = interaction.options.getChannel("channel");
         const role = interaction.options.getRole("role");
 
+        if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.reply({ content: 'You do not have appropriate permission to run this command!', ephemeral:true })
+       
+
         const permissions = channel.permissionsFor(interaction.member);
 
         if (!permissions.has(PermissionsBitField.Flags.SendMessages)) return interaction.editReply({content: 'You do not have permission to send message in that channel.'});

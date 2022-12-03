@@ -29,11 +29,11 @@ module.exports = {
 
         const embedMessage = new EmbedBuilder()
             .setDescription(`${message}`)
-
+        
+        if(!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) return interaction.editReply({ content: 'You do not have appropriate permission to run this command!', ephemeral:true })
         const permissions = channel.permissionsFor(interaction.member);
 
         if (!permissions.has(PermissionsBitField.Flags.SendMessages)) return interaction.editReply({content: 'You do not have permission to send messages in that channel'});
-
         if(!mention) {
 
             if(embed) return channel.send({embeds: [embedMessage]});
