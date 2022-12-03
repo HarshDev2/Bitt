@@ -39,7 +39,7 @@ module.exports = {
                 return interaction.reply({embeds: [accountInvalidEmbed]});
         }
         else if(selfData && anotherData){
-            console.log('test 1 passed')
+            
             if(selfData.wallet < amount){
                 const giveEmbed = new EmbedBuilder()
                 .setTitle('Give Comamnd Failed')

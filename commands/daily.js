@@ -5,7 +5,7 @@ const prettyMilliseconds = require('pretty-ms');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("daily")
-        .setDescription("Get your daily money"),
+        .setDescription("Get your daily bitties"),
      async execute(interaction){
         const user = interaction.member.user
         const userData = await User.findOne({ id: user.id })

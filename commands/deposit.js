@@ -4,7 +4,7 @@ const { User } = require("../models/userSchema")
 module.exports = {
     data: new SlashCommandBuilder()
     .setName("deposit")
-    .setDescription("Deposit your wallet money to bank")
+    .setDescription("Deposit your wallet bitties to bank")
     .addNumberOption(
         option => option
         .setName("amount")
