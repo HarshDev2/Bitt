@@ -27,14 +27,14 @@ module.exports = {
         else if (userData.wallet < amount){
             const depositEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`💰 You need ${amount - userData.wallet} :coin: more in your wallet to deposit money`)
+            .setDescription(`💰 You need \`${amount - userData.wallet} bitties\` more in your wallet to deposit money`)
             return interaction.reply({embeds: [depositEmbed]})
         }
 
         else{
             const depositEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`✅ You have deposited ${amount} :coin: amount into your bank account`)
+            .setDescription(`✅ You have deposited \`${amount} bitties\` amount into your bank account`)
 
             userData.wallet -= amount
             userData.bank += amount

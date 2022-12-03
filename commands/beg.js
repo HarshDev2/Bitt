@@ -18,7 +18,7 @@ module.exports = {
 
         const begPassedEmbed = new EmbedBuilder()
         .setColor('Yellow')
-        .setDescription(`Oh my! You begged and earned \ ${amount} :coin: `)
+        .setDescription(`Oh my! You begged and earned \`${amount} bitties\` `)
 
         if(!userData){
             const accountInvalidEmbed = new EmbedBuilder()
@@ -38,7 +38,8 @@ module.exports = {
 
         else if(amount <= 5) {
             userData.cooldowns.beg = Date.now() + (1000 * 60)
-            userData.save()
+
+            await userData.save()
             return interaction.reply({embeds: [begFailedEmbed]})
         }
         else {

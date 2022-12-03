@@ -24,7 +24,7 @@ module.exports = {
         }
         else {
             const dailyEmbed = new EmbedBuilder()
-            .setDescription(`💰 You have collected your daily 250 :coin: amount`)
+            .setDescription(`💰 You have collected your daily \`250 bitties\` amount`)
             userData.wallet += 250;
             userData.cooldowns.daily = new Date().setHours(24,0,0,0)
             await userData.save();

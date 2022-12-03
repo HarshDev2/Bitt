@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders")
+const { SlashCommandBuilder } = require("discord.js")
 const { MessageEmbed, EmbedBuilder } = require("discord.js")
 const { User } = require("../models/userSchema")
 
@@ -32,8 +32,8 @@ module.exports = {
                 .setColor("Yellow")
                 .setThumbnail(user.displayAvatarURL())
                 .addFields(
-                    { name: '• Wallet', value: `** ${userData.wallet} :coin: **`, inline: true},
-                    { name: '• Bank', value: `** ${userData.bank} :coin: **`, inline: true},
+                    { name: '• Wallet', value: `**\`${userData.wallet} bitties\`**`, inline: true},
+                    { name: '• Bank', value: `**\`${userData.bank} bitties\`**`, inline: true},
                 
                 )
                 return interaction.reply({embeds: [balanceEmbed]})
@@ -57,8 +57,8 @@ module.exports = {
                 .setColor("Yellow")
                 .setThumbnail(interaction.member.user.displayAvatarURL())
                 .addFields(
-                    { name: '• Wallet', value: `** ${userData.wallet} :coin: **`, inline: true},
-                    { name: '• Bank', value: `** ${userData.bank} :coin: **`, inline: true},
+                    { name: '• Wallet', value: `**\`${userData.wallet} bitties\`**`, inline: true},
+                    { name: '• Bank', value: `**\`${userData.bank} bitties\`**`, inline: true},
                 
                 )
                 return interaction.reply({embeds: [balanceEmbed]})

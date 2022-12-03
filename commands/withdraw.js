@@ -10,7 +10,7 @@ module.exports = {
         .setName("amount")
         .setDescription("Amount to withdraw")
         .setRequired(true)
-        .setMinValue(1) //should be more than 100 coins
+        .setMinValue(1)
     ),
     async execute(interaction) {
         const user = interaction.member.user;
@@ -24,17 +24,17 @@ module.exports = {
 
             return interaction.reply({embeds: [accountInvalidEmbed]})
         }
-        else if (userData.wallet < amount){
+        else if (userData.bank < amount){
             const withdrawEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`💰 You need ${amount - userData.bank} :coin: more in your bank to withdraw money`)
+            .setDescription(`💰 You need \`${amount - userData.bank} bitties\` more in your bank to withdraw money`)
             return interaction.reply({embeds: [withdrawEmbed]})
         }
 
         else{
             const withdrawEmbed = new EmbedBuilder()
             .setColor('Yellow')
-            .setDescription(`✅ You have withdrawn ${amount} :coin: amount into your wallet.`)
+            .setDescription(`✅ You have withdrawn \`${amount} bitties\` amount into your wallet.`)
 
             userData.bank -= amount;
             userData.wallet += amount;

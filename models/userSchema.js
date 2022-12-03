@@ -3,6 +3,7 @@ const User = new mongoose.Schema({
     id: { type: String, unique: true, required: true },
     wallet: { type: Number, default: 500 },
     bank: { type: Number, default: 0 },
+    loan: {type: Number, default: 0 },
     AlertSeen: { type: Boolean, default: false},
     cooldowns: {
         work: { type: Date },
